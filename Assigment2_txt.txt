@@ -1,0 +1,114 @@
+
+==============================
+Assigment2 TXT
+==============================
+
+1) Example Codes and Explanations
+---------------------------------
+
+🔹 hello.c
+-----------------
+#include <stdio.h>
+
+int main() {
+    printf("Hello!\n");
+    return 0;
+}
+
+Explanation:
+- Prints "Hello!" to the console.
+
+🔹 sum.c
+-----------------
+#include <stdio.h>
+
+int sum(int a, int b);
+
+int main() {
+    int result = sum(2, 4);
+    printf("Sum = %d\n", result);
+    return 0;
+}
+
+Explanation:
+- Calls sum() function defined in sum_func.c.
+
+🔹 sum_func.c
+-----------------
+int sum(int a, int b) {
+    return a + b;
+}
+
+Explanation:
+- Defines sum() function.
+
+🔹 extern_var.c
+-----------------
+int x = 20;
+
+Explanation:
+- Defines a global variable x.
+
+🔹 extern_main.c
+-----------------
+#include <stdio.h>
+
+extern int x;
+
+int main() {
+    printf("x = %d\n", x);
+    return 0;
+}
+
+Explanation:
+- Demonstrates using 'extern' to access x from another file.
+
+🔹 static.c
+-----------------
+#include <stdio.h>
+
+void counter() {
+    static int c = 0;
+    c++;
+    printf("Counter = %d\n", c);
+}
+
+int main() {
+    counter();
+    counter();
+    counter();
+    return 0;
+}
+
+Explanation:
+- Demonstrates static variable behavior.
+
+2) Job of the Linker
+-----------------
+- Combines object files (.o) into a single executable.
+- Resolves references between different files (functions, variables).
+- Links program with required libraries (e.g., stdio).
+- Produces final executable like 'sum', 'hello', etc.
+
+Practical example:
+- In sum.c + sum_func.c, the linker connects sum() function with main.
+
+3) Job of the Loader
+-----------------
+- Loads the executable into memory (RAM) for execution.
+- Sets up memory sections: text, data, bss, stack, heap.
+- Initializes program counter at the entry point (main).
+- Prepares program to run.
+
+Practical example:
+- When executing './hello' or './sum', the loader prepares the program in RAM and starts execution.
+
+4) When and How Linking and Loading Occurred
+---------------------------------
+- Linking happened during compilation step when 'make' was run:
+    gcc src/sum.c src/sum_func.c -o sum
+  - Compiler converts .c files to .o files.
+  - Linker combines them into executable 'sum'.
+- Loading happened during execution:
+    ./sum
+  - Loader loaded executable into memory and started program execution.
